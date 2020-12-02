@@ -19,4 +19,10 @@ You can not have more than one port open at once. The port is a 2 way road that 
 The reason we scale the output of the potentiometer, is so that the data going to the port is 8 bits not 10.
 ## #3
 - The potentiometer changes the ball position because of the data it is outputting. The arduino is sending out a value between 0 and 255. Processing is reading that information and updating the x position just like it does with another variable change.
-- For the [video](https://photos.app.goo.gl/Z9PuE3rHv18abqv8A), I am using Serial-potentipmeter for the input and potentipmeter_reader1 for the output.
+- For the [video](https://photos.app.goo.gl/Z9PuE3rHv18abqv8A), I am using Serial-potentipmeter1 for the input and potentipmeter_reader1 for the output.
+- In the tutorial, There looks to be some lag between the potentiometer and the ball in processing, but I didn't see that for my own code.
+## #4
+- Here is the [video](https://photos.app.goo.gl/UXmFse7Cd6ZCgAnF7) of the final version.
+- The ball moves across the entire screen by mapping what a value would be in the original state to what it is in the new state. It takes the total range of the new state and divides it by the range of the original state. In my code, the input from the port is multiplied by 3.137.
+- To reduce latency, the arduino only sends info when processing asks for it. This reduces the amount of data being sent and read.
+- Over all I learned how to read and write to the serial port on both arduino and processing. I learned a bit about the behind the scenes stuff which will make implementing this into my game easier. Knowing that it is better to ask for the data instead of constantly sending it, will be good to know considering that I assume the sensor I want to use will need to send a lot of data. It may also make it easier to ask for different types of data individually instead of all at once. I just need to make sure that I can send unique data back to arduino so it knows what kind of data to return.
